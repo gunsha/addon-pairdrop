@@ -1,0 +1,16 @@
+---
+configuration:
+  websocket_fallback:
+    name: Enable Websocket Fallback
+    description: >-
+      Enable falling back to websockets when RTC cannot be established 
+      (traffic is unencrypted and can be intercepted by the server in this mode)
+  rtc_config_sdpSemantics:
+    name: rtc_config.sdpSemantics option
+    description: >-
+      This option should normally be unchanged unless you have a specific configuration needed for your TURN server.
+  rtc_config_iceServers:
+    name: List of STUN/TURN server configurations to send to clients.
+    description: >-
+      If you are using a STUN/TURN server, you can add more options here. This can be useful for complicated
+      network setups.

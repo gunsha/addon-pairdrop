@@ -1,0 +1,36 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Add-on: Pairdrop
+# Runs the Pairdrop interface
+# ==============================================================================
+declare -a options
+
+bashio::log.info "Starting Pairdrop..."
+
+options+=(--abort_on_uncaught_exception)
+options+=("--max_old_space_size=250")
+
+export NODE_CONFIG_DIR=/data/pairdrop
+export NODE_ENV=production
+
+if bashio::debug; then
+  export DEBUG=1
+fi
+
+# IPv6 is currently not supported yet on a Supervisor enabled system.
+export DISABLE_IPV6="true"
+
+cd /opt/pairdrop \
+    || bashio::exit.nok "Could not change directory to app"
+
+# Update the RTC_CONFIG
+export RTC_CONFIG=/tmp/rtc_config.json
+jq '. | { sdpSemantics: .rtc_config_sdpSemantics, iceServers: .rtc_config_iceServers  }' /data/options.json > "${RTC_CONFIG}"
+
+if bashio::config.true 'websocket_fallback'; then
+  # In-case command line usage changes in the future.
+  export WS_FALLBACK="true"
+  exec node "${options[@]}" index.js --include-ws-fallback
+else
+  exec node "${options[@]}" index.js
+fi
