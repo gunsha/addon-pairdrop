@@ -18,7 +18,7 @@ RUN \
         nodejs \
     \
     && curl -J -L -o /tmp/pairdrop.tar.gz \
-        "https://github.com/schlagmichdoch/PairDrop/archive/refs/tags/v1.9.3.tar.gz" \
+        "https://github.com/schlagmichdoch/PairDrop/archive/refs/tags/v1.10.11.tar.gz" \
     && mkdir -p /opt/pairdrop \
     && tar zxvf \
         /tmp/pairdrop.tar.gz \
