@@ -30,7 +30,7 @@ jq '. | { sdpSemantics: .rtc_config_sdpSemantics, iceServers: .rtc_config_iceSer
 if bashio::config.true 'websocket_fallback'; then
   # In-case command line usage changes in the future.
   export WS_FALLBACK="true"
-  exec node "${options[@]}" index.js --include-ws-fallback
+  exec node "${options[@]}" server/index.js --include-ws-fallback
 else
-  exec node "${options[@]}" index.js
+  exec node "${options[@]}" server/index.js
 fi
