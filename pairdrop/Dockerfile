@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:14.1.0
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:17.2.3
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -6,7 +6,7 @@ FROM ${BUILD_FROM}
 ENV NODE_OPTIONS="--openssl-legacy-provider"
 
 # Setup base
-ARG PAIRDROP_VERSION="v1.9.3"
+ARG PAIRDROP_VERSION="v1.11.2"
 
 # hadolint ignore=DL3003,DL3042
 RUN \
@@ -18,7 +18,7 @@ RUN \
         nodejs \
     \
     && curl -J -L -o /tmp/pairdrop.tar.gz \
-        "https://github.com/schlagmichdoch/PairDrop/archive/refs/tags/v1.10.11.tar.gz" \
+        "https://github.com/schlagmichdoch/PairDrop/archive/refs/tags/v1.11.2.tar.gz" \
     && mkdir -p /opt/pairdrop \
     && tar zxvf \
         /tmp/pairdrop.tar.gz \
@@ -46,11 +46,11 @@ LABEL \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
-    maintainer="William Rouesnel <wrouesnel@wrouesnel.com>" \
+    maintainer="Gonzalo Aller <gonzaller@gmail.com>" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
     org.opencontainers.image.vendor="Home Assistant Community Add-ons" \
-    org.opencontainers.image.authors="William Rouesnel <wrouesnel@wrouesnel.com>" \
+    org.opencontainers.image.authors="Gonzalo Aller <gonzaller@gmail.com>" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.url="https://addons.community" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \

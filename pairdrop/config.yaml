@@ -1,10 +1,10 @@
 ---
 name: Pairdrop
-version: 1.10.11
+version: 1.11.2
 slug: pairdrop
 description: Share files between any device securely and locally
-url: https://github.com/wrouesnel/addon-pairdrop
-codenotary: wrouesnel@wrouesnel.com
+url: https://github.com/gunsha/addon-pairdrop
+codenotary: gonzaller@gmail.com
 init: false
 arch:
   - aarch64
