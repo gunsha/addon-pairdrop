@@ -1,10 +1,11 @@
 ---
 name: Pairdrop
-version: 1.11.3
+version: 1.11.4
 slug: pairdrop
 description: Share files between any device securely and locally
 url: https://github.com/gunsha/addon-pairdrop
 codenotary: gonzaller@gmail.com
+webui: http://[HOST]:[PORT:3000]
 init: false
 arch:
   - aarch64
@@ -21,6 +22,8 @@ options:
   rtc_config_sdpSemantics: unified-plan
   rtc_config_iceServers:
     - urls: "stun:stun.l.google.com:19302"
+ports:
+  3000/tcp: 3000
 schema:
   websocket_fallback: bool
   rtc_config_sdpSemantics: str
